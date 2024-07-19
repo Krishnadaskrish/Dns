@@ -1,7 +1,6 @@
 import express from 'express';
 const MenuRoute = express.Router()
-import MenuController from '../controllers/MenuController.js';
-
+import MenuController from '../controllers/MenuController.js'
 
 
 MenuRoute
