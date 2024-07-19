@@ -48,7 +48,7 @@ const Home: React.FC = () => {
       <Nav />
       <Menu />
       <ItemCard items={drinksItems} title="DRINKS" image1="jar.png" image2="cup1.png" top={true} />
-      <ItemCard items={drinksItems} title="BRANCH COCKTAILS" image1="cocktail2.png" image2="cocktail.png" top={true} />
+      <ItemCard items={branchItems} title="BRANCH COCKTAILS" image1="cocktail2.png" image2="cocktail.png" top={true} />
       <Flavor item={flavors} />
       <InfoCard />
       <Footer />
