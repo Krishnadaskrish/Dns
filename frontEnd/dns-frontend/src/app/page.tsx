@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       try {
         const response = await Axios.get<{ status: string; data: Item[] }>("/api/get");
         if (response.data.status === "success") {
-          const brunchItems = response.data.data.filter((item: Item) => item.category === "brunch cocktails");
+          const brunchItems = response.data.data.filter((item: Item) => item.category === "branch cocktails");
           const drinksItems = response.data.data.filter((item: Item) => item.category === "drinks");
 
           setBrunchItems(brunchItems);
