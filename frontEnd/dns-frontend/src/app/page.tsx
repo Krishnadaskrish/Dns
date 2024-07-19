@@ -26,7 +26,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const getitemdata = async () => {
       try {
-        const response = await Axios.get<{ status: string; data: Item[] }>("http://localhost:3002/api/get");
+        const response = await Axios.get<{ status: string; data: Item[] }>("/api/get");
         if (response.data.status === "success") {
           const brunchItems = response.data.data.filter((item: Item) => item.category === "brunch cocktails");
           const drinksItems = response.data.data.filter((item: Item) => item.category === "drinks");
