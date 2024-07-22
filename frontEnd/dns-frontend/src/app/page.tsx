@@ -1,6 +1,6 @@
 'use client';
 import React, { useState , useEffect } from 'react';
-import Nav from './componet/nav';
+import Navbar from './componet/nav';
 import Menu from './componet/menu';
 import ItemCard from './componet/itemCard';
 import Flavor from './componet/flavor';
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <Nav />
+      <Navbar />
       <Menu />
       <ItemCard items={drinksItems} title="DRINKS" image1="jar.png" image2="cup1.png" top={true} />
       <ItemCard items={branchItems} title="BRANCH COCKTAILS" image1="cocktail2.png" image2="cocktail.png" top={true} />

@@ -1,9 +1,14 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-function Navbar() {
+interface MenuItem {
+  label: string;
+  link: string;
+}
+
+const Navbar: React.FC = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   const handleMenuClick = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -13,14 +18,14 @@ function Navbar() {
     setMobileMenuOpen(false);
   };
 
-  const menuItems = [
-    { label: "HOME", link: "#" },
-    { label: "MENU", link: "#" },
-    { label: "MAKE A RESERVATION", link: "#" },
-    { label: "CONTACT US", link: "#" },
+  const menuItems: MenuItem[] = [
+    { label: 'HOME', link: '#' },
+    { label: 'MENU', link: '#' },
+    { label: 'MAKE A RESERVATION', link: '#' },
+    { label: 'CONTACT US', link: '#' },
   ];
 
-  const labelStyles = "font-normal text-[16px] leading-[23.71px] tracking-wider hover:text-[#0796EF]";
+  const labelStyles = 'font-normal text-[16px] leading-[23.71px] tracking-wider hover:text-[#0796EF]';
 
   return (
     <div className="bg-[#121618] h-[100px]">
@@ -69,6 +74,6 @@ function Navbar() {
       )}
     </div>
   );
-}
+};
 
 export default Navbar;
