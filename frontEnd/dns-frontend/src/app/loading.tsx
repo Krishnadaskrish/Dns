@@ -1,9 +1,14 @@
-import Loader from "./componet/Loader";
+import Loader from "./componet/Loader"; // Assuming components folder exists
 
 const Loading = () => {
-    return (
-        <Loader/>
-    )
-}
+  // If using state management, fetch data or control loader visibility here
+  // ...
 
-export default Loading ;
+  return (
+    <div>
+      {<Loader />}
+    </div>
+  );
+};
+
+export default Loading;

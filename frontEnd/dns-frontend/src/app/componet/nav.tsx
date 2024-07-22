@@ -1,38 +1,74 @@
-'use client';
-import {useState} from 'react';
+import { useState } from "react";
+import { useMediaQuery } from 'react-responsive';
 
-function nav() {
+function Navbar() {
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    
-  const [activeLink, setActiveLink] = useState<string>('Home');
+  const handleMenuClick = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleMenuClose = () => {
+    setMobileMenuOpen(false);
+  };
+
+  const menuItems = [
+    { label: "HOME", link: "#" },
+    { label: "MENU", link: "#" },
+    { label: "MAKE A RESERVATION", link: "#" },
+    { label: "CONTACT US", link: "#" },
+  ];
+
+  const labelStyles = "font-normal text-[16px] leading-[23.71px] tracking-wider hover:text-[#0796EF]";
 
   return (
-    <div>
-        <div style={{backgroundColor:'#121618'}} className="h-[100px] w-full">
-       
-        <div className="flex justify-end gap-8 text-[15px] md:pt-[61px] pr-[120px] font-Oswald">
-        {['HOME', 'MENU', 'MAKE A RESERVATION', 'CONTACT US'].map((link) => (
-              
-                <h4
-                  key={link}
-                  onClick={() => setActiveLink(link)}
-                  style={{ color: activeLink === link ? '#0796EF' : 'white' }}
-                  className="cursor-pointer"
-                >
-                  {link}
-                </h4>
-         
-            ))}
+    <div className="bg-[#121618] h-[100px]">
+      <div className="flex items-center h-full px-4 md:px-20 justify-between">
+        <div className={`flex items-center ${isMobile ? 'mt-[3rem]' : 'mt-12 ml-4'} z-10`}>
+          <img src='Logo1.png' alt="Logo" className="h-[50px]" />
+          {!isMobile && (
+            <div className="ml-2">
+              <span className="text-[#0796EF]">DEEP</span> NET <br />
+              <span className="text-[#857878]">SOFT</span>
+            </div>
+          )}
         </div>
-        <div className='flex justify-start'>
-            <img className='z-[1] md:ml-[240px] md:mt-[-20px]' src='Logo1.png' />
-        </div>
-        <div className='flex justify-start'>
-        <img className='z-[1] h-[70px] md:ml-[340px] md:mt-[-75px]' src='deep.png' />
-        </div>
+        {isMobile ? (
+          <button
+            className="text-white mr-2"
+            onClick={handleMenuClick}
+          >
+            ☰
+          </button>
+        ) : (
+          menuItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.link}
+              className={`${labelStyles} mt-[3rem] ml-4 text-white`}
+            >
+              {item.label}
+            </a>
+          ))
+        )}
       </div>
+      {mobileMenuOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-1 z-20">
+          {menuItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.link}
+              onClick={handleMenuClose}
+              className={`${labelStyles} block px-4 py-2 text-black`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default nav
+export default Navbar;
